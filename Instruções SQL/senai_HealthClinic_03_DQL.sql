@@ -19,13 +19,24 @@ SELECT
 	tb_Consultas.DataConsulta AS [Data da Consulta],
 	tb_Consultas.HorarioConsulta AS [Horario da Consulta],
 	tb_Clinicas.NomeFantasia AS [Clinica],
-	--Nome do Paciente AS [Nome do Paciente], 
-	--Nome do Medico AS [Nome do Medico],
-	--Especialidade do Medico AS [Especialidade],
+	p.NomeUsuario AS [Nome do Paciente], 
+	m.NomeUsuario AS [Nome do Medico],
+	tb_Especialidades.TituloEspecialidade AS [Especialidade],
 	tb_Medicos.CRM AS [CRM],
 	tb_Consultas.DescricaoConsulta AS [Prontuário],
 	tb_Feedbacks.Comentario AS [Feedback]
 FROM tb_Consultas
-INNER JOIN tb
-
-
+LEFT JOIN tb_Clinicas 
+ON tb_Clinicas.IdClinica = tb_Consultas.IdClinica
+LEFT JOIN tb_Medicos
+ON tb_Medicos.IdMedico = tb_Consultas.IdMedico
+LEFT JOIN tb_Especialidades
+ON tb_Especialidades.IdEspecialidade = tb_Medicos.IdEspecialidade
+LEFT JOIN tb_Feedbacks
+ON tb_Feedbacks.IdConsulta = tb_Consultas.IdConsulta
+LEFT JOIN tb_Pacientes
+ON tb_Consultas.IdPaciente = tb_Pacientes.IdPaciente
+LEFT JOIN tb_Usuarios AS p
+ON p.IdUsuario = tb_Pacientes.IdUsuario
+LEFT JOIN tb_Usuarios AS m
+ON m.IdUsuario = tb_Medicos.IdUsuario
