@@ -19,7 +19,7 @@ namespace webApi.health_clinic.Domains
         [Column(TypeName = "VARCHAR(14)")]
         [Required(ErrorMessage = "CPF do usuário é obrigatório!")]
         [StringLength(14, ErrorMessage = "Confira os dígitos do CPF e os insira corretamente! (Apenas números)")]
-        public string CPF { get; set; }
+        public string? CPF { get; set; }
 
         [Column(TypeName = "VARCHAR(100)")]
         [Required(ErrorMessage = "Email do usuário é obrigatório!")]

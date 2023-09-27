@@ -11,7 +11,7 @@ namespace webApi.health_clinic.Domains
 
         [Column(TypeName = "DATETIME")]
         [Required(ErrorMessage = "Data e horário da consulta é obrigatório!")]
-        public string? DatetimeConsulta { get; set; }
+        public DateTime? DatetimeConsulta { get; set; }
 
         [Column(TypeName = "TEXT")]
         [Required(ErrorMessage = "Descrição para prontuário da consulta é obrigatória!")]
