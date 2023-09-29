@@ -7,7 +7,6 @@ namespace webApi.health_clinic.Interfaces
         void Cadastrar(TiposUsuario tipoUsuarioCrt);
         void Delete(Guid id);
         List<TiposUsuario> Listar();
-        TiposUsuario BuscarPorId(Guid id);
         void Atualizar(Guid id, TiposUsuario tipoUsuarioUpdt);
     }
 }
