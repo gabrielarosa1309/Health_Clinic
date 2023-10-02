@@ -17,6 +17,34 @@ namespace webApi.health_clinic.Controllers
             _UsuarioRepository = new UsuarioRepository();
         }
 
+        [HttpPut]
+        public IActionResult Put(Guid id, Usuario usuarioUpdt)
+        {
+            try
+            {
+                _UsuarioRepository.Atualizar(id, usuarioUpdt);
+
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult BuscarPorId(Guid id)
+        {
+            try
+            {
+                return Ok(_UsuarioRepository.BuscarPorId(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
         [HttpPost]
         public IActionResult Post(Usuario usuarioCrt)
         {
