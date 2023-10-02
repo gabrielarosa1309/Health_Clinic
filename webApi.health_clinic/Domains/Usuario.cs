@@ -25,7 +25,7 @@ namespace webApi.health_clinic.Domains
         [Required(ErrorMessage = "Email do usuário é obrigatório!")]
         public string? Email { get; set; }
 
-        [Column(TypeName = "CHAR(60)")]
+        [Column(TypeName = "VARCHAR(60)")]
         [Required(ErrorMessage = "Senha do usuário é obrigatório!")]
         [StringLength(60, MinimumLength = 6, ErrorMessage = "Senha deve conter de 6 a 60 caracteres!")]
         public string? Senha { get; set; }
