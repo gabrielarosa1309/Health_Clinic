@@ -1,9 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace webApi.health_clinic.Domains
 {
     [Table(nameof(Clinica))]
+    [Index(nameof(RazaoSocial), IsUnique = true)]
+    [Index(nameof(CNPJ), IsUnique = true)]
     public class Clinica
     {
         [Key]
