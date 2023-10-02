@@ -33,7 +33,7 @@ namespace webApi.health_clinic.Repositories
 
         public Clinica BuscarPorId(Guid id)
         {
-            throw new NotImplementedException();
+            return _healthClinicContext.Clinica.FirstOrDefault(u => u.IdClinica == id)!;
         }
 
         public void Cadastrar(Clinica clinicaCrt)

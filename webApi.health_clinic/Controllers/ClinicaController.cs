@@ -32,6 +32,19 @@ namespace webApi.health_clinic.Controllers
             }
         }
 
+        [HttpGet("{id}")]
+        public IActionResult BuscarPorId(Guid id)
+        {
+            try
+            {
+                return Ok(_ClinicaRepository.BuscarPorId(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
         [HttpPost]
         public IActionResult Post(Clinica clinicaCrt)
         {
