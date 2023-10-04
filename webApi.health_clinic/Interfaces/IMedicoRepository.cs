@@ -6,9 +6,5 @@ namespace webApi.health_clinic.Interfaces
     {
         void Cadastrar(Medico medicoCrt);
         void Delete(Guid id);
-        List<Medico> Listar();
-        Medico BuscarPorId(Guid id);
-        Medico BuscarPorCPFeSenha(string CPF, string senha);
-        void Atualizar(Guid id, Medico medicoUpdt);
     }
 }
