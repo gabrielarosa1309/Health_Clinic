@@ -22,6 +22,7 @@ namespace webApi.health_clinic.Repositories
             {
                 consultaBuscada.DatetimeConsulta = consultaUpdt.DatetimeConsulta;
                 consultaBuscada.DescricaoConsulta = consultaUpdt.DescricaoConsulta;
+                consultaBuscada.Confirmacao = consultaUpdt.Confirmacao;
             }
 
             _healthClinicContext.Consulta.Update(consultaBuscada!);
@@ -55,6 +56,16 @@ namespace webApi.health_clinic.Repositories
             {
                 throw;
             }
+        }
+
+        public List<Consulta> ListarDeMedico(Guid idMedico)
+        {
+            return _healthClinicContext.Consulta.Where(u => u.IdMedico == idMedico).ToList();
+        }
+
+        public List<Consulta> ListarDePaciente(Guid idPaciente)
+        {
+            return _healthClinicContext.Consulta.Where(u => u.IdPaciente == idPaciente).ToList();
         }
 
         public List<Consulta> Listar()

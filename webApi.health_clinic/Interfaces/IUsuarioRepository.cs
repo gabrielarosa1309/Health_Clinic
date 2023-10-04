@@ -8,7 +8,7 @@ namespace webApi.health_clinic.Interfaces
         void Delete(Guid id);
         List<Usuario> Listar();
         Usuario BuscarPorId(Guid id);
-        Usuario BuscarPorCPFeSenha(string CPF, string senha);
+        Usuario BuscarPorEmaileSenha(string Email, string senha);
         void Atualizar(Guid id, Usuario usuarioUpdt);
     }
 }

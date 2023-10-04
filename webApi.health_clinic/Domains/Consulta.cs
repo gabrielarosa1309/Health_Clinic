@@ -9,9 +9,14 @@ namespace webApi.health_clinic.Domains
         [Key]
         public Guid IdConsulta { get; set; } = Guid.NewGuid();
 
-        [Column(TypeName = "DATETIME")]
+        [Column(TypeName = "DATE")]
         [Required(ErrorMessage = "Data e horário da consulta é obrigatório!")]
         public DateTime? DatetimeConsulta { get; set; }
+
+
+        [Column(TypeName = "BIT")]
+        [Required(ErrorMessage = "Confirmação é obrigatória!")]
+        public bool Confirmacao { get; set; }
 
         [Column(TypeName = "TEXT")]
         [Required(ErrorMessage = "Descrição para prontuário da consulta é obrigatória!")]

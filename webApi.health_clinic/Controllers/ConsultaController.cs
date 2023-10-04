@@ -76,6 +76,32 @@ namespace webApi.health_clinic.Controllers
             }
         }
 
+        [HttpGet("ListarPaciente/{id}")]
+        public IActionResult GetPaciente(Guid id)
+        {
+            try
+            {
+                return Ok(_ConsultaRepository.ListarDePaciente(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpGet("ListarMedico/{id}")]
+        public IActionResult GetMedico(Guid id)
+        {
+            try
+            {
+                return Ok(_ConsultaRepository.ListarDeMedico(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
         [HttpGet]
         public IActionResult Get()
         {

@@ -28,7 +28,7 @@ namespace webApi.health_clinic.Repositories
             _healthClinicContext.SaveChanges();
         }
 
-            public Usuario BuscarPorCPFeSenha(string CPF, string senha)
+            public Usuario BuscarPorEmaileSenha(string email, string senha)
             {
                 try
                 {
@@ -45,7 +45,7 @@ namespace webApi.health_clinic.Repositories
                             IdTipoUsuario = u.IdTipoUsuario,
                             Titulo = u.TiposUsuario!.Titulo
                         }
-                    }).FirstOrDefault(u => u.CPF == CPF)!;
+                    }).FirstOrDefault(u => u.Email == email)!;
 
                     if (usuarioBuscado != null)
                     {

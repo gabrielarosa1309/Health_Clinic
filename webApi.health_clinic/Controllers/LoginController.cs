@@ -26,7 +26,7 @@ namespace webApi.health_clinic.Controllers
         {
             try
             {
-                Usuario usuarioBuscado = _usuarioRepository.BuscarPorCPFeSenha(usuario.CPF!, usuario.Senha!);
+                Usuario usuarioBuscado = _usuarioRepository.BuscarPorEmaileSenha(usuario.Email!, usuario.Senha!);
 
                 if (usuarioBuscado == null)
                 {
