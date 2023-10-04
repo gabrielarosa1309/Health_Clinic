@@ -13,6 +13,7 @@ namespace webApi.health_clinic.Repositories
         {
             _healthClinicContext = new HealthClinicContext();
         }
+
         public void Cadastrar(Medico medicoCrt)
         {
             _healthClinicContext.Medico.Add(medicoCrt);
