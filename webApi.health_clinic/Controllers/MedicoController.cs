@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using webApi.health_clinic.Domains;
 using webApi.health_clinic.Interfaces;
 using webApi.health_clinic.Repositories;
@@ -19,6 +21,7 @@ namespace webApi.health_clinic.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "Adm")]
         public IActionResult Post(Medico medicoCrt)
         {
             try
@@ -34,6 +37,7 @@ namespace webApi.health_clinic.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Adm")]
         public IActionResult Delete(Guid id)
         {
             try

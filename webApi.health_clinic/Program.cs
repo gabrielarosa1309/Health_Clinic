@@ -1,6 +1,6 @@
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,23 +48,61 @@ builder.Services.AddAuthentication(options =>
 
     };
 });
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(
-//Adiciona informações sobre a API no Swagger
-options.SwaggerDoc("v1", new OpenApiInfo
+builder.Services.AddSwaggerGen(options =>
 {
-    Version = "v1",
-    Title = "API HealthClinic",
-
-    Contact = new OpenApiContact
+    //Adiciona informações sobre a API no Swagger
+    options.SwaggerDoc("v1", new OpenApiInfo
     {
-        Name = "Gabriela Ramos",
-        Url = new Uri("https://github.com/gabrielarosa1309/Health_Clinic")
-    }
-}));
+        Version = "v1",
+        Title = "API Health Clinic",
+        Description = "Projeto da sprint de back-end do segundo semestre do curso de DEV - Senai Informática",
+
+        Contact = new OpenApiContact
+        {
+            Name = "Gabriela",
+            Url = new Uri("https://github.com/gabrielarosa1309")
+        }
+    });
+
+    // Configura o Swagger para usar o arquivo XML gerado
+    //var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    //options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 
 
+    //BLOCO DE CÓDIGO PARA APARECER UM INPUT DE AUTENTICAÇÃO NO SWAGGER
+    //NESSE INPUT NÓS DEVEMOS SEMPRE COLOCAR UM "Bearer" ANTES DE COLOCAR UM TOKEN
+
+    //Usando a autenticaçao no Swagger
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "Value: Bearer TokenJWT ",
+    });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] {}
+        }
+    });
+
+    // FIM DO BLOCO DE CÓDIGO PARA AUTENTICAÇÃO DO SWAGGER
+
+});
 
 var app = builder.Build();
 
@@ -75,8 +113,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseSwaggerUI(options =>
+{
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+    options.RoutePrefix = string.Empty;
+});
+
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
+//O authorization obrigatoriamente deve ficar embaixo da authentication
 app.UseAuthorization();
 
 app.MapControllers();
