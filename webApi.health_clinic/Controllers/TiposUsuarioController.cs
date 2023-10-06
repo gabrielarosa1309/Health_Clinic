@@ -17,6 +17,12 @@ namespace webApi.health_clinic.Controllers
             _TiposUsuarioRepository = new TiposUsuarioRepository();
         }
 
+        /// <summary>
+        /// Método para atualização de dados do tipo de usuário
+        /// </summary>
+        /// <param name="id"> id do tipo de usuário a ser atualizado </param>
+        /// <param name="tiposUsuarioUpdt"> Objeto com dados atualizados do tipo de usuário </param>
+        /// <returns> Tipo de usuário atualizado </returns>
         [HttpPut]
         public IActionResult Put(Guid id, TiposUsuario tiposUsuarioUpdt)
         {
@@ -32,6 +38,12 @@ namespace webApi.health_clinic.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Método para cadastro do tipo de usuário
+        /// </summary>
+        /// <param name="tipoUsuarioCrt"> Objeto com os dados do tipo de usuário a ser adicionado </param>
+        /// <returns> Tipo de usuário novo </returns>
         [HttpPost]
         public IActionResult Post(TiposUsuario tipoUsuarioCrt)
         {
@@ -47,6 +59,12 @@ namespace webApi.health_clinic.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Método para deletar tipo de usuários
+        /// </summary>
+        /// <param name="id"> id do tipo de usuário a ser deletado </param>
+        /// <returns> O tipo de usuário é deletado </returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {
@@ -62,6 +80,11 @@ namespace webApi.health_clinic.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Método para listar tipo de usuários cadastrados
+        /// </summary>
+        /// <returns> Lista de tipo de usuários </returns>
         [HttpGet]
         public IActionResult Get()
         {

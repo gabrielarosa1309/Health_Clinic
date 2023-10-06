@@ -18,6 +18,12 @@ namespace webApi.health_clinic.Controllers
             _FeedbackRepository = new FeedbackRepository();
         }
 
+        /// <summary>
+        /// Método para atualização de dados do feedback
+        /// </summary>
+        /// <param name="id"> id do feedback a ser atualizado </param>
+        /// <param name="feedbackUpdt"> Objeto com dados atualizados do feedback </param>
+        /// <returns> feedback atualizado </returns>
         [HttpPut]
         public IActionResult Put(Guid id, Feedback feedbackUpdt)
         {
@@ -33,6 +39,12 @@ namespace webApi.health_clinic.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Método para buscar o feedback desejado pelo id
+        /// </summary>
+        /// <param name="id"> id do feedback a ser buscado </param>
+        /// <returns> feedback buscado </returns> 
         [HttpGet("{id}")]
         public IActionResult BuscarPorId(Guid id)
         {
@@ -46,6 +58,12 @@ namespace webApi.health_clinic.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Método para cadastro do feedback
+        /// </summary>
+        /// <param name="feedbackCrt"> Objeto com os dados do feedback a ser adicionado </param>
+        /// <returns> feedback novo </returns>
         [HttpPost]
         public IActionResult Post(Feedback feedbackCrt)
         {
@@ -61,6 +79,12 @@ namespace webApi.health_clinic.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Método para deletar feedbacks
+        /// </summary>
+        /// <param name="id"> id do feedback a ser deletado </param>
+        /// <returns> O feedback é deletado </returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {
@@ -76,6 +100,11 @@ namespace webApi.health_clinic.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Método para listar feedbacks cadastrados
+        /// </summary>
+        /// <returns> Lista de feedbacks </returns>
         [HttpGet]
         public IActionResult Get()
         {

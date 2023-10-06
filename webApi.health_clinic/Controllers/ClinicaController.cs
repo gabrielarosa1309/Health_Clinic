@@ -17,6 +17,12 @@ namespace webApi.health_clinic.Controllers
             _ClinicaRepository = new ClinicaRepository();
         }
 
+        /// <summary>
+        /// Método para atualização de dados da clínica
+        /// </summary>
+        /// <param name="id"> id da clínica a ser atualizada </param>
+        /// <param name="clinicaUpdt"> Objeto com dados atualizados da clínica </param>
+        /// <returns> Clínica atualizada </returns>
         [HttpPut]
         public IActionResult Put(Guid id, Clinica clinicaUpdt)
         {
@@ -32,6 +38,12 @@ namespace webApi.health_clinic.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Método para buscar a clínica desejada pelo id
+        /// </summary>
+        /// <param name="id"> id da clínica a ser buscada </param>
+        /// <returns> Clínica buscada </returns> 
         [HttpGet("{id}")]
         public IActionResult BuscarPorId(Guid id)
         {
@@ -45,6 +57,12 @@ namespace webApi.health_clinic.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Método para cadastro da clínica
+        /// </summary>
+        /// <param name="clinicaCrt"> Objeto com os dados da clínica a ser adicionada </param>
+        /// <returns> Clínica nova </returns>
         [HttpPost]
         public IActionResult Post(Clinica clinicaCrt)
         {
@@ -60,6 +78,12 @@ namespace webApi.health_clinic.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Método para deletar clínicas
+        /// </summary>
+        /// <param name="id"> id da clínica a ser deletada </param>
+        /// <returns> A clínica é deletada </returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {
@@ -75,6 +99,11 @@ namespace webApi.health_clinic.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Método para listar clínicas cadastradas
+        /// </summary>
+        /// <returns> Lista de clínicas </returns>
         [HttpGet]
         public IActionResult Get()
         {

@@ -17,6 +17,12 @@ namespace webApi.health_clinic.Controllers
             _EspecialidadeRepository = new EspecialidadeRepository();
         }
 
+        /// <summary>
+        /// Método para atualização de dados da especialidade
+        /// </summary>
+        /// <param name="id"> id da especialidade a ser atualizada </param>
+        /// <param name="especialidadeUpdt"> Objeto com dados atualizados da especialidade </param>
+        /// <returns> Especialidade atualizada </returns>
         [HttpPut]
         public IActionResult Put(Guid id, Especialidade especialidadeUpdt)
         {
@@ -32,6 +38,12 @@ namespace webApi.health_clinic.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Método para buscar a especialidade desejada pelo id
+        /// </summary>
+        /// <param name="id"> id da especialidade a ser buscada </param>
+        /// <returns> Especialidade buscada </returns> 
         [HttpGet("{id}")]
         public IActionResult BuscarPorId(Guid id)
         {
@@ -45,6 +57,12 @@ namespace webApi.health_clinic.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Método para cadastro de especialidade
+        /// </summary>
+        /// <param name="especialidadeCrt"> Objeto com os dados da especialidade a ser adicionada </param>
+        /// <returns> Especialidade nova </returns>
         [HttpPost]
         public IActionResult Post(Especialidade especialidadeCrt)
         {
@@ -60,6 +78,12 @@ namespace webApi.health_clinic.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Método para deletar especialidades
+        /// </summary>
+        /// <param name="id"> id da especialidade a ser deletada </param>
+        /// <returns> A especialidade é deletada </returns>
         [HttpDelete ("{id}")]
         public IActionResult Delete(Guid id)
         {
@@ -75,6 +99,11 @@ namespace webApi.health_clinic.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Método para listar especialidades cadastradas
+        /// </summary>
+        /// <returns> Lista de especialidades </returns>
         [HttpGet] 
         public IActionResult Get(int id)
         {

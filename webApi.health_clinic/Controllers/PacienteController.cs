@@ -17,6 +17,11 @@ namespace webApi.health_clinic.Controllers
             _PacienteRepository = new PacienteRepository();
         }
 
+        /// <summary>
+        /// Método para cadastro do paciente
+        /// </summary>
+        /// <param name="pacienteCrt"> Objeto com os dados do paciente a ser adicionado </param>
+        /// <returns> Paciente novo </returns>
         [HttpPost]
         public IActionResult Post(Paciente pacienteCrt)
         {
@@ -32,6 +37,12 @@ namespace webApi.health_clinic.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Método para deletar pacientes
+        /// </summary>
+        /// <param name="id"> id do paciente a ser deletado </param>
+        /// <returns> O paciente é deletado </returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {

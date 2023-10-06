@@ -20,6 +20,11 @@ namespace webApi.health_clinic.Controllers
         }
 
 
+        /// <summary>
+        /// Método para cadastro do médico
+        /// </summary>
+        /// <param name="medicoCrt"> Objeto com os dados do médico a ser adicionado </param>
+        /// <returns> Médico novo </returns>
         [HttpPost]
         [Authorize(Roles = "Adm")]
         public IActionResult Post(Medico medicoCrt)
@@ -36,6 +41,12 @@ namespace webApi.health_clinic.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Método para deletar médicos
+        /// </summary>
+        /// <param name="id"> id do médico a ser deletado </param>
+        /// <returns> O médico é deletado </returns>
         [HttpDelete("{id}")]
         [Authorize(Roles = "Adm")]
         public IActionResult Delete(Guid id)

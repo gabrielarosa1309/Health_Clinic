@@ -17,6 +17,13 @@ namespace webApi.health_clinic.Controllers
             _UsuarioRepository = new UsuarioRepository();
         }
 
+
+        /// <summary>
+        /// Método para atualização de dados do usuário
+        /// </summary>
+        /// <param name="id"> id do usuário a ser atualizado </param>
+        /// <param name="usuarioUpdt"> Objeto com dados atualizados do usuário </param>
+        /// <returns> Usuário atualizado </returns>
         [HttpPut]
         public IActionResult Put(Guid id, Usuario usuarioUpdt)
         {
@@ -32,6 +39,12 @@ namespace webApi.health_clinic.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Método para buscar o usuário desejado pelo id
+        /// </summary>
+        /// <param name="id"> id do usuário a ser buscado </param>
+        /// <returns> Usuário buscado </returns> 
         [HttpGet("{id}")]
         public IActionResult BuscarPorId(Guid id)
         {
@@ -45,6 +58,12 @@ namespace webApi.health_clinic.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Método para cadastro do usuário
+        /// </summary>
+        /// <param name="usuarioCrt"> Objeto com os dados do usuário a ser adicionado </param>
+        /// <returns> Usuário novo </returns>
         [HttpPost]
         public IActionResult Post(Usuario usuarioCrt)
         {
@@ -60,6 +79,12 @@ namespace webApi.health_clinic.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Método para deletar usuários
+        /// </summary>
+        /// <param name="id"> id do usuário a ser deletado </param>
+        /// <returns> O usuário é deletado </returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {
@@ -75,6 +100,11 @@ namespace webApi.health_clinic.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Método para listar usuários cadastrados
+        /// </summary>
+        /// <returns> Lista de usuários </returns>
         [HttpGet]
         public IActionResult Get()
         {

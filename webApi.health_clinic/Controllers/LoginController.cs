@@ -21,6 +21,11 @@ namespace webApi.health_clinic.Controllers
             _usuarioRepository = new UsuarioRepository();
         }
 
+        /// <summary>
+        /// Método de login do sistema
+        /// </summary>
+        /// <param name="usuario"> Objeto com o usuário que irá acessar </param>
+        /// <returns> Acesso ao usuário </returns>
         [HttpPost]
         public IActionResult Post(LoginViewModel usuario)
         {
